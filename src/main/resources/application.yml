@@ -61,12 +61,24 @@ spring:
       # 👈 Внедряем специфичную переменную с дефолтным значением для логистики грузов
       uri: ${LOGISTICS_CARGO_MONGO_URI:mongodb://localhost:27018/logistics_cargo_mongo_db}
 
+  # ============================================================
+  # 🔐 SPRING SECURITY
+  # ============================================================
+
   security:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:8080/realms/logistics
-#          jwk-set-uri: http://localhost:8080/realms/logistics/protocol/openid-connect/certs
+#          issuer-uri: http://localhost:8080/realms/logistics-platform
+          issuer-uri: ${SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER_URI:http://localhost:8080/realms/logistics-platform}
+
+  # 🟢 Public endpoints (не требуют авторизации)
+  public:
+    endpoints:
+      - /actuator/health
+      - /actuator/info
+      - /swagger-ui/**
+      - /v3/api-docs/**
 
 logging:
   level:

@@ -38,37 +38,54 @@
 
 
 	<dependencies>
-		<dependency>
+        <!-- ============================================================ -->
+        <!-- 🚀 SPRING BOOT STARTERS                                        -->
+        <!-- ============================================================ -->
+
+        <dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+
+        <!--        для работы jakarta.validation.constraints.Min;-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+
+        <!-- ============================================================ -->
+        <!-- 🔐 SPRING SECURITY + OAUTH2 (ДОБАВЛЕНО)                       -->
+        <!-- ============================================================ -->
+
+        <!-- Spring Security + OAuth2 Resource Server -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
+        <!-- ============================================================ -->
+        <!-- 🗄️ БАЗЫ ДАННЫХ                                                -->
+        <!-- ============================================================ -->
 
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
 
-
-
-        <!-- Database -->
         <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-mongodb</artifactId>
         </dependency>
 
         <dependency>
@@ -76,12 +93,15 @@
             <artifactId>liquibase-core</artifactId>
         </dependency>
 
+        <!-- ============================================================ -->
+        <!-- 🛠️ УТИЛИТЫ                                                    -->
+        <!-- ============================================================ -->
 
-<!--        для работы jakarta.validation.constraints.Min;-->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-validation</artifactId>
-        </dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
 
         <!-- MapStruct -->
         <dependency>
@@ -96,33 +116,36 @@
             <scope>provided</scope>
         </dependency>
 
-<!--        Добавляю Mongo-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-mongodb</artifactId>
-        </dependency>
-
-<!--        иначе Hibernate не сможет сериализовать Set<Long> в JSONB.-->
+        <!--        иначе Hibernate не сможет сериализовать Set<Long> в JSONB.-->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.22.0</version>
+<!--            <version>2.22.0</version>-->
         </dependency>
 
-
         <!-- JavaFaker для генерации тестовых данных -->
-<!--        <dependency>-->
-<!--            <groupId>com.github.javafaker</groupId>-->
-<!--            <artifactId>javafaker</artifactId>-->
-<!--            <version>1.0.2</version>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>com.github.javafaker</groupId>-->
+        <!--            <artifactId>javafaker</artifactId>-->
+        <!--            <version>1.0.2</version>-->
+        <!--        </dependency>-->
 
-<!--        Более вовременная библиотека-->
+        <!--        Более вовременная библиотека-->
         <dependency>
             <groupId>net.datafaker</groupId>
             <artifactId>datafaker</artifactId>
             <version>2.3.0</version>
         </dependency>
+
+        <!-- ============================================================ -->
+        <!-- 🧪 ТЕСТЫ                                                      -->
+        <!-- ============================================================ -->
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
 
 	</dependencies>
 
@@ -166,42 +189,6 @@
                     </annotationProcessorPaths>
                 </configuration>
             </plugin>
-<!--			<plugin>-->
-<!--				<groupId>org.apache.maven.plugins</groupId>-->
-<!--				<artifactId>maven-compiler-plugin</artifactId>-->
-<!--				<executions>-->
-<!--					<execution>-->
-<!--						<id>default-compile</id>-->
-<!--						<phase>compile</phase>-->
-<!--						<goals>-->
-<!--							<goal>compile</goal>-->
-<!--						</goals>-->
-<!--						<configuration>-->
-<!--							<annotationProcessorPaths>-->
-<!--								<path>-->
-<!--									<groupId>org.projectlombok</groupId>-->
-<!--									<artifactId>lombok</artifactId>-->
-<!--								</path>-->
-<!--							</annotationProcessorPaths>-->
-<!--						</configuration>-->
-<!--					</execution>-->
-<!--					<execution>-->
-<!--						<id>default-testCompile</id>-->
-<!--						<phase>test-compile</phase>-->
-<!--						<goals>-->
-<!--							<goal>testCompile</goal>-->
-<!--						</goals>-->
-<!--						<configuration>-->
-<!--							<annotationProcessorPaths>-->
-<!--								<path>-->
-<!--									<groupId>org.projectlombok</groupId>-->
-<!--									<artifactId>lombok</artifactId>-->
-<!--								</path>-->
-<!--							</annotationProcessorPaths>-->
-<!--						</configuration>-->
-<!--					</execution>-->
-<!--				</executions>-->
-<!--			</plugin>-->
 		</plugins>
 	</build>
 
